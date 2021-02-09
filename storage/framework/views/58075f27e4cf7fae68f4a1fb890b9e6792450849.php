@@ -1,2 +1,0 @@
-<link rel="stylesheet" href="<?php echo e(getAsset('plugins/select2/select2.min.css')); ?>" type="text/css"/>
-<link rel="stylesheet" href="<?php echo e(getAsset('plugins/select2/select2-bootstrap.min.css')); ?>" type="text/css"/><?php /**PATH C:\xampp2\htdocs\NETIC360APP\resources\views/stacks/css/form.blade.php ENDPATH**/ ?>

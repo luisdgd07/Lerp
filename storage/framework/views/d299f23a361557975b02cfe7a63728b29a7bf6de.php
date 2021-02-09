@@ -1,1 +1,0 @@
-<?php /**PATH C:\xampp2\htdocs\NETIC360APP\resources\views/partial/custom.blade.php ENDPATH**/ ?>

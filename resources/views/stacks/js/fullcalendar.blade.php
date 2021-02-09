@@ -1,1 +1,0 @@
-<script src="{{ getAsset('plugins/calendar/main.min.js') }}"></script>

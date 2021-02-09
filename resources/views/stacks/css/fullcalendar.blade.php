@@ -1,1 +1,0 @@
-<link rel="stylesheet" href="{{ getAsset('plugins/calendar/main.min.css') }}" type="text/css" />

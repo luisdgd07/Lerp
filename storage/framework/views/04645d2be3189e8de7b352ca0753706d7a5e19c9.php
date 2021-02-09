@@ -1,1 +1,0 @@
-<script src="<?php echo e(getAsset('plugins/calendar/main.min.js')); ?>"></script><?php /**PATH C:\xampp2\htdocs\NETIC360APP\resources\views/stacks/js/fullcalendar.blade.php ENDPATH**/ ?>
