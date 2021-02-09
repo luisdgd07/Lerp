@@ -2,7 +2,8 @@
     class="bg-{{ get_option('sidebar_theme') }} aside-md b-r {{ settingEnabled('hide_sidebar') ? 'nav-xs' : '' }} hidden-print hidden-xs"
     id="nav">
     <section class="vbox">
-        <header class="clearfix text-center header bg-dark">
+
+        {{-- <header class="clearfix text-center header bg-dark">
             <div class="btn-group">
 
                 <div class="btn-group hidden-nav-xs">
@@ -42,14 +43,12 @@
             </div>
 
 
-        </header>
-        <section class="w-f scrollable">
-            <div class="slim-scroll" data-color="#333333" data-disable-fade-out="true" data-distance="0"
-                data-height="auto" data-size="5px">
+        </header> --}}
+        <section class="scrollable">
+            <div class="slim-scroll" data-disable-fade-out="true" data-distance="0" data-height="auto" data-size="5px">
 
-                <nav class="nav-primary hidden-xs">
+                <nav class=" ">
                     <ul class="nav">
-
                         @foreach (mainMenu() as $menu)
                             @if (count($menu['children']) > 0)
 
@@ -72,9 +71,7 @@
                                             @if (Auth::user()->can($submenu['module']))
                                                 <li class="{{ $page == langapp($submenu['name']) ? 'active' : '' }}">
                                                     <a href="{{ url($submenu['route']) }}">
-                                                        <i class="{{ $submenu['icon'] }} icon">
-                                                            <b class="{{ themeBg() }}"></b>
-                                                        </i>
+
                                                         <span>
                                                             @langapp($submenu['name'])
                                                         </span>

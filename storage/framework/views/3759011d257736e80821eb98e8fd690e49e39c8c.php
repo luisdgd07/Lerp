@@ -1,1 +1,0 @@
-<link href="<?php echo e(getAsset('plugins/nouislider/jquery.nouislider.min.css')); ?>" rel="stylesheet" type="text/css"><?php /**PATH C:\xampp2\htdocs\NETIC360APP\resources\views/stacks/css/nouislider.blade.php ENDPATH**/ ?>

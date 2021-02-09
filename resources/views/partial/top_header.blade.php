@@ -1,9 +1,10 @@
-<header class="bg-{{ get_option('top_bar_color') }} header navbar  navbar-fixed-top-xs nav-z">
+<header class="bg-{{ get_option('top_bar_color') }} header navbar  navbar-fixed-top-xs ">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
                 @icon('solid/bars')
             </a>
+
             <a href="{{ url('/') }}" class="navbar-brand {{ themeText() }}">
                 @php $display = get_option('logo_or_icon'); @endphp
                 @if ($display == 'logo' || $display == 'logo_title')
@@ -24,6 +25,7 @@
                 @icon('solid/cog')
             </a>
         </div>
+
         <ul class="nav navbar-nav hidden-xs" id="todolist">
             <li class="">
 
@@ -62,6 +64,25 @@
                 </div>
 
             </li>
+            <li>
+                @if (settingEnabled('enable_languages'))
+                    <div class="btn-group dropdown ">
+                        <button class="mt-4 ml-4" data-toggle="dropdown" aria-expanded="false">
+                            @icon('solid/globe')
+                        </button>
+                        <ul class="dropdown-menu">
+                            @foreach (languages() as $lang)
+                                <li class="">
+                                    <a href="{{ route('setLanguage', ['locale' => $lang['code']]) }}"
+                                        title="{{ ucwords(str_replace('_', ' ', $lang['name'])) }}">
+                                        {{ ucwords(str_replace('_', ' ', $lang['name'])) }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </li>
         </ul>
 
 
@@ -81,16 +102,37 @@
             @include('partial.notifications')
 
             @admin
-            <li class="dropdown hidden-xs">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+            <li>
+                <form action="{{ route('search.app') }}" method="POST" role="search" class="">
+                    {!! csrf_field() !!}
+                    <div class="flex w-full mt-2 md:ml-0">
+                        <label for="search_field" class="sr-only">Search</label>
+                        <div class="relative w-full text-gray-500 focus-within:text-gray-600">
+                            <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                                <svg class="w-5 h-5 m-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <input x-ref="searchField" x-on:keydown.window.prevent.slash="$refs.searchField.focus()"
+                                name="keyword" placeholder="Type and press Enter"
+                                class="block w-full h-full py-2 pl-8 pr-3 text-gray-900 placeholder-gray-500 bg-gray-200 rounded-md focus:outline-none focus:placeholder-gray-600 sm:text-sm">
+                        </div>
+                    </div>
+
+
+                </form>
+                {{-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
                     x-on:click="$refs.searchField.focus()">
                     @icon('solid/search', 'fa-fw')
-                </a>
+                </a> --}}
+
                 <section class="dropdown-menu aside-xl animated fadeInUp">
                     <section class="bg-white panel">
 
-                        <form action="{{ route('search.app') }}" method="POST" role="search">
-                            {!! csrf_field() !!}
+                        {{-- <form action="{{ route('search.app') }}" method="POST" role="search">
+                            {!!  csrf_field() !!}
                             <div class="flex w-full p-4 md:ml-0">
                                 <label for="search_field" class="sr-only">Search</label>
                                 <div class="relative w-full text-gray-500 focus-within:text-gray-600">
@@ -109,7 +151,7 @@
                             </div>
 
 
-                        </form>
+                        </form> --}}
                     </section>
                 </section>
             </li>
@@ -147,7 +189,11 @@
                         </form>
                     </li>
                 </ul>
+
+
+
             </li>
+
         </ul>
     </div>
 </header>

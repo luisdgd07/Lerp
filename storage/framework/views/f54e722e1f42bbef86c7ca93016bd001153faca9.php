@@ -2,54 +2,13 @@
     class="bg-<?php echo e(get_option('sidebar_theme')); ?> aside-md b-r <?php echo e(settingEnabled('hide_sidebar') ? 'nav-xs' : ''); ?> hidden-print hidden-xs"
     id="nav">
     <section class="vbox">
-        <header class="clearfix text-center header bg-dark">
-            <div class="btn-group">
 
-                <div class="btn-group hidden-nav-xs">
-                    <button type="button" class="<?php echo e(themeButton()); ?> dropdown-toggle" data-toggle="dropdown">
-                        <?php echo trans('app.'.'quick_links'); ?>
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="text-left dropdown-menu">
-                        <li>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('users_create')): ?>
-                                <a href="<?php echo e(route('invite')); ?>" data-toggle="ajaxModal"><?php echo e(svg_image('solid/envelope-open',
-                                    'text-muted')); ?> <?php echo trans('app.'.'send_invite'); ?></a>
-                            <?php endif; ?>
-                            <?php if (moduleActive('projects')) { ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('projects_create')): ?>
-                                <a href="<?php echo e(route('projects.create')); ?>"><?php echo e(svg_image('solid/play', 'text-muted')); ?>
-                                    <?php echo trans('app.'.'start_project'); ?></a>
-                            <?php endif; ?>
-                            <?php } ?>
-                            <?php if (moduleActive('contracts')) { ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('contracts_create')): ?>
-                                <a href="<?php echo e(route('contracts.create')); ?>"><?php echo e(svg_image('solid/file-contract', 'text-muted')); ?>
-                                    <?php echo trans('app.'.'start_contract'); ?></a>
-                            <?php endif; ?>
-                            <?php } ?>
-                            <?php if (moduleActive('tickets')) { ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('tickets_create')): ?>
-                                <a href="<?php echo e(route('tickets.create')); ?>"><?php echo e(svg_image('solid/life-ring', 'text-muted')); ?>
-                                    <?php echo trans('app.'.'new_ticket'); ?></a>
-                            <?php endif; ?>
-                            <?php } ?>
+        
+        <section class="scrollable">
+            <div class="slim-scroll" data-disable-fade-out="true" data-distance="0" data-height="auto" data-size="5px">
 
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-
-
-        </header>
-        <section class="w-f scrollable">
-            <div class="slim-scroll" data-color="#333333" data-disable-fade-out="true" data-distance="0"
-                data-height="auto" data-size="5px">
-
-                <nav class="nav-primary hidden-xs">
+                <nav class=" ">
                     <ul class="nav">
-
                         <?php $__currentLoopData = mainMenu(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <?php if(count($menu['children']) > 0): ?>
 
@@ -72,9 +31,7 @@
                                             <?php if(Auth::user()->can($submenu['module'])): ?>
                                                 <li class="<?php echo e($page == langapp($submenu['name']) ? 'active' : ''); ?>">
                                                     <a href="<?php echo e(url($submenu['route'])); ?>">
-                                                        <i class="<?php echo e($submenu['icon']); ?> icon">
-                                                            <b class="<?php echo e(themeBg()); ?>"></b>
-                                                        </i>
+
                                                         <span>
                                                             <?php echo trans('app.'.$submenu['name']); ?>
                                                         </span>

@@ -789,13 +789,7 @@ if (!function_exists('mainMenu')) {
             now()->addDays(5),
             function () {
                 $collection = Hook::with('children')->where('visible', 1)->whereParent('')->whereHook('main_menu')->orderBy('order')->get();
-                return $collection->filter(
-                    function ($item) {
-                        if (Auth::user()->can($item['module'])) {
-                            return $item;
-                        }
-                    }
-                )->toArray();
+                return $collection;
             }
         );
     }
