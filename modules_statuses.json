@@ -33,5 +33,7 @@
     "Todos": true,
     "Updates": true,
     "Users": true,
-    "Webhook": true
+    "Webhook": true,
+    "Landing": true,
+    "Inventory": true
 }

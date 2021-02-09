@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 use Modules\Webhook\Http\Controllers\StripeWebhookController;
 
 Route::get('/', 'Welcome@index')->middleware(['auth']);
-
 Auth::routes(['verify' => config('system.verification'), 'register' => settingEnabled('allow_client_registration')]);
 
 Route::get('/redirect/{provider}', 'SocialAuthController@redirectToProvider');

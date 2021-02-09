@@ -12,7 +12,6 @@ class Welcome extends Controller
     {
         return redirect('dashboard');
     }
-
     public function acceptCurrency()
     {
         Cookie::make('acceptCurrency', 'true', 1440);

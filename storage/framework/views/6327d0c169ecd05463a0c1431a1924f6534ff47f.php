@@ -1,0 +1,1 @@
+<script src="<?php echo e(getAsset('plugins/colorpicker/colorpicker.min.js')); ?>"></script><?php /**PATH C:\xampp2\htdocs\NETIC360APP\resources\views/stacks/js/colorpicker.blade.php ENDPATH**/ ?>

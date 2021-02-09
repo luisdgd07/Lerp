@@ -1363,65 +1363,65 @@ function addressFormatReplace($mergeCode, $val, $txt)
         $result = preg_replace('/({' . $mergeCode . '})/i', $val, $txt);
     } else {
         $re = '/\s{0,}{' . $mergeCode . '}(<br ?\/?>(\n))?/i';
-        $result = preg_replace($re, '', $txt);
-    }
-    return $result;
+$result = preg_replace($re, '', $txt);
+}
+return $result;
 }
 
 /**
- * This function replace <br /> only nothing exists in the line and first line other then <br />
- *  Replace first <br /> lines to prevent new spaces
- * @param  string $text The text to perform the action
- * @return string
- */
+* This function replace <br /> only nothing exists in the line and first line other then <br />
+* Replace first <br /> lines to prevent new spaces
+* @param string $text The text to perform the action
+* @return string
+*/
 function removeFirstLastBr($text)
 {
-    $text = preg_replace('/^<br ?\/?>/is', '', $text);
-    // Replace last <br /> lines to prevent new spaces while there is new line
-    while (preg_match('/<br ?\/?>$/', $text)) {
-        $text = preg_replace('/<br ?\/?>$/is', '', $text);
-    }
-    return $text;
+$text = preg_replace('/^<br ?\/?>/is', '', $text);
+// Replace last <br /> lines to prevent new spaces while there is new line
+while (preg_match('/<br ?\/?>$/', $text)) {
+$text = preg_replace('/<br ?\/?>$/is', '', $text);
+}
+return $text;
 }
 
 function hideString($string)
 {
-    return preg_replace("/(?!^).(?!$)/", "*", $string);
+return preg_replace("/(?!^).(?!$)/", "*", $string);
 }
 
 function setEnvironmentValue(array $values)
 {
-    $envFile = app()->environmentFilePath();
-    $str = file_get_contents($envFile);
+$envFile = app()->environmentFilePath();
+$str = file_get_contents($envFile);
 
-    if (count($values) > 0) {
-        foreach ($values as $envKey => $envValue) {
-            $str .= "\n"; // In case the searched variable is in the last line without \n
-            $keyPosition = strpos($str, "{$envKey}=");
-            $endOfLinePosition = strpos($str, "\n", $keyPosition);
-            $oldLine = substr($str, $keyPosition, $endOfLinePosition - $keyPosition);
+if (count($values) > 0) {
+foreach ($values as $envKey => $envValue) {
+$str .= "\n"; // In case the searched variable is in the last line without \n
+$keyPosition = strpos($str, "{$envKey}=");
+$endOfLinePosition = strpos($str, "\n", $keyPosition);
+$oldLine = substr($str, $keyPosition, $endOfLinePosition - $keyPosition);
 
-            // If key does not exist, add it
-            if (!$keyPosition || !$endOfLinePosition || !$oldLine) {
-                $str .= "{$envKey}={$envValue}\n";
-            } else {
-                $str = str_replace($oldLine, "{$envKey}={$envValue}", $str);
-            }
-        }
-    }
+// If key does not exist, add it
+if (!$keyPosition || !$endOfLinePosition || !$oldLine) {
+$str .= "{$envKey}={$envValue}\n";
+} else {
+$str = str_replace($oldLine, "{$envKey}={$envValue}", $str);
+}
+}
+}
 
-    $str = substr($str, 0, -1);
-    if (!file_put_contents($envFile, $str)) {
-        return false;
-    }
+$str = substr($str, 0, -1);
+if (!file_put_contents($envFile, $str)) {
+return false;
+}
 
-    return true;
+return true;
 }
 
 if (!function_exists('_dd')) {
-    function _dd($args)
-    {
-        http_response_code(500);
-        dd($args);
-    }
+function _dd($args)
+{
+http_response_code(500);
+dd($args);
+}
 }

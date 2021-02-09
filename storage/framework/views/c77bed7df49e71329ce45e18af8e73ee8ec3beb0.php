@@ -1,0 +1,1 @@
+<script src="<?php echo e(getAsset('js/chart.js')); ?>"></script><?php /**PATH C:\xampp2\htdocs\NETIC360APP\resources\views/stacks/js/chart.blade.php ENDPATH**/ ?>

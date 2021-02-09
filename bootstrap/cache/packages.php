@@ -33,6 +33,17 @@
       'AWS' => 'Aws\\Laravel\\AwsFacade',
     ),
   ),
+  'barryvdh/laravel-debugbar' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\Debugbar\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Debugbar' => 'Barryvdh\\Debugbar\\Facade',
+    ),
+  ),
   'barryvdh/laravel-dompdf' => 
   array (
     'providers' => 
@@ -49,6 +60,24 @@
     'providers' => 
     array (
       0 => 'Bepsvpt\\SecureHeaders\\SecureHeadersServiceProvider',
+    ),
+  ),
+  'beyondcode/laravel-self-diagnosis' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'BeyondCode\\SelfDiagnosis\\SelfDiagnosisServiceProvider',
+    ),
+  ),
+  'facade/ignition' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Facade\\Ignition\\IgnitionServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Flare' => 'Facade\\Ignition\\Facades\\Flare',
     ),
   ),
   'fideloper/proxy' => 
@@ -222,6 +251,13 @@
     'aliases' => 
     array (
       'Nexmo' => 'Nexmo\\Laravel\\Facade\\Nexmo',
+    ),
+  ),
+  'nunomaduro/collision' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
   'nwidart/laravel-modules' => 
